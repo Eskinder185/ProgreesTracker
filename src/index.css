@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { @apply text-slate-800; }
+
+.container-page { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.card { @apply relative bg-white rounded-2xl border border-slate-100 shadow-[0_6px_30px_rgba(0,0,0,0.06)]; }
+.badge { @apply px-3 py-1 rounded-full text-xs bg-slate-100; }
+.section-title { @apply text-xl font-semibold; }
+
+/* ========================
+   THEME SYSTEM (CSS Vars)
+   ======================== */
+:root {
+  /* default theme = pink/fuchsia */
+  --accent-50:  #fdf4ff;
+  --accent-100: #fae8ff;
+  --accent-200: #f5d0fe;
+  --accent-300: #f0abfc;
+  --accent-600: #c026d3;
+  --accent-700: #a21caf;
+  --accent-800: #86198f;
+  --accent-shadow-rgb: 162, 28, 175;
+  --hero-a: #ffd4f0;
+  --hero-b: #eaeaff;
+  --hero-c: #f7f8ff;
+  --bg-main: #fff7fc;
+}
+
+/* Theme presets (data-theme on <html> or <body>) */
+[data-theme="pink"] {
+  --accent-50:#fdf4ff; --accent-100:#fae8ff; --accent-200:#f5d0fe; --accent-300:#f0abfc; --accent-600:#c026d3; --accent-700:#a21caf; --accent-800:#86198f; --accent-shadow-rgb:162,28,175;
+  --hero-a:#ffd4f0; --hero-b:#eaeaff; --hero-c:#f7f8ff;
+  --bg-main:#fff7fc;
+}
+[data-theme="violet"] {
+  --accent-50:#f5f3ff; --accent-100:#ede9fe; --accent-200:#ddd6fe; --accent-300:#c4b5fd; --accent-600:#7c3aed; --accent-700:#6d28d9; --accent-800:#5b21b6; --accent-shadow-rgb:124,58,237;
+  --hero-a:#efe5ff; --hero-b:#e6ebff; --hero-c:#f6f8ff;
+  --bg-main:#f7f6ff;
+}
+[data-theme="sky"] {
+  --accent-50:#f0f9ff; --accent-100:#e0f2fe; --accent-200:#bae6fd; --accent-300:#7dd3fc; --accent-600:#0284c7; --accent-700:#0369a1; --accent-800:#075985; --accent-shadow-rgb:2,132,199;
+  --hero-a:#e6f6ff; --hero-b:#eef6ff; --hero-c:#f7fbff;
+  --bg-main:#f6fcff;
+}
+[data-theme="emerald"] {
+  --accent-50:#ecfdf5; --accent-100:#d1fae5; --accent-200:#a7f3d0; --accent-300:#6ee7b7; --accent-600:#059669; --accent-700:#047857; --accent-800:#065f46; --accent-shadow-rgb:5,150,105;
+  --hero-a:#eafff4; --hero-b:#e8fff7; --hero-c:#f7fffb;
+  --bg-main:#f6fff9;
+}
+[data-theme="rose"] {
+  --accent-50:#fff1f2; --accent-100:#ffe4e6; --accent-200:#fecdd3; --accent-300:#fda4af; --accent-600:#e11d48; --accent-700:#be123c; --accent-800:#9f1239; --accent-shadow-rgb:225,29,72;
+  --hero-a:#ffe4ea; --hero-b:#fff0f2; --hero-c:#fff7f9;
+  --bg-main:#fff6f8;
+}
+[data-theme="amber"] {
+  --accent-50:#fffbeb; --accent-100:#fef3c7; --accent-200:#fde68a; --accent-300:#fcd34d; --accent-600:#d97706; --accent-700:#b45309; --accent-800:#92400e; --accent-shadow-rgb:217,119,6;
+  --hero-a:#fff2cc; --hero-b:#fff7df; --hero-c:#fffaf0;
+  --bg-main:#fffbe6;
+}
+[data-theme="indigo"] {
+  --accent-50:#eef2ff; --accent-100:#e0e7ff; --accent-200:#c7d2fe; --accent-300:#a5b4fc; --accent-600:#4f46e5; --accent-700:#4338ca; --accent-800:#3730a3; --accent-shadow-rgb:79,70,229;
+  --hero-a:#e9ebff; --hero-b:#eef1ff; --hero-c:#f6f8ff;
+  --bg-main:#f6f7ff;
+}
+[data-theme="violet"] {
+  --accent-50:#f5f3ff; --accent-100:#ede9fe; --accent-200:#ddd6fe; --accent-300:#c4b5fd; --accent-600:#7c3aed; --accent-700:#6d28d9; --accent-800:#5b21b6; --accent-shadow-rgb:124,58,237;
+  --hero-a:#efe5ff; --hero-b:#e6ebff; --hero-c:#f6f8ff;
+}
+[data-theme="sky"] {
+  --accent-50:#f0f9ff; --accent-100:#e0f2fe; --accent-200:#bae6fd; --accent-300:#7dd3fc; --accent-600:#0284c7; --accent-700:#0369a1; --accent-800:#075985; --accent-shadow-rgb:2,132,199;
+  --hero-a:#e6f6ff; --hero-b:#eef6ff; --hero-c:#f7fbff;
+}
+[data-theme="emerald"] {
+  --accent-50:#ecfdf5; --accent-100:#d1fae5; --accent-200:#a7f3d0; --accent-300:#6ee7b7; --accent-600:#059669; --accent-700:#047857; --accent-800:#065f46; --accent-shadow-rgb:5,150,105;
+  --hero-a:#eafff4; --hero-b:#e8fff7; --hero-c:#f7fffb;
+}
+[data-theme="rose"] {
+  --accent-50:#fff1f2; --accent-100:#ffe4e6; --accent-200:#fecdd3; --accent-300:#fda4af; --accent-600:#e11d48; --accent-700:#be123c; --accent-800:#9f1239; --accent-shadow-rgb:225,29,72;
+  --hero-a:#ffe4ea; --hero-b:#fff0f2; --hero-c:#fff7f9;
+}
+[data-theme="amber"] {
+  --accent-50:#fffbeb; --accent-100:#fef3c7; --accent-200:#fde68a; --accent-300:#fcd34d; --accent-600:#d97706; --accent-700:#b45309; --accent-800:#92400e; --accent-shadow-rgb:217,119,6;
+  --hero-a:#fff2cc; --hero-b:#fff7df; --hero-c:#fffaf0;
+}
+[data-theme="indigo"] {
+  --accent-50:#eef2ff; --accent-100:#e0e7ff; --accent-200:#c7d2fe; --accent-300:#a5b4fc; --accent-600:#4f46e5; --accent-700:#4338ca; --accent-800:#3730a3; --accent-shadow-rgb:79,70,229;
+  --hero-a:#e9ebff; --hero-b:#eef1ff; --hero-c:#f6f8ff;
+}
+
+/* Hero gradient uses theme vars */
+.hero-wrap {
+  background: radial-gradient(1200px 500px at 50% -50%, var(--hero-a) 0%, var(--hero-b) 40%, var(--hero-c) 70%, transparent 100%);
+}
+
+/* Accent helpers (use instead of hard-coded fuchsia classes) */
+.accent-text { color: var(--accent-700); }
+.accent-bg { background-color: var(--accent-100); color: var(--accent-700); }
+.accent-bg-solid { background-color: var(--accent-600); color: #fff; }
+.accent-border { border-color: var(--accent-200); }
+.accent-chip { background-color: var(--accent-200); color: var(--accent-800); }
+.focus-ring-accent:focus-visible { outline: none; box-shadow: 0 0 0 2px rgba(var(--accent-shadow-rgb), .35); }
+
+/* Glow-up animation driven by theme color */
+.hover-glow { @apply transition-all duration-300 will-change-transform; }
+.hover-glow:hover {
+  box-shadow: 0 10px 35px rgba(var(--accent-shadow-rgb), 0.25), 0 0 0 6px rgba(var(--accent-shadow-rgb), 0.08);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Chips / segmented */
+.segment { @apply inline-flex items-center gap-1 p-1 rounded-full bg-white/90 backdrop-blur border border-slate-200 shadow; }
+.segment-btn { @apply px-4 py-2 rounded-full text-sm transition-all duration-300 hover:scale-[1.02]; }
+.segment-btn--active { @apply text-white shadow; background-color: var(--accent-600); }
+.segment-btn--idle { @apply text-slate-700 hover:bg-slate-100; }
+
+/* Watermark icon on tiles */
+.tile-watermark { @apply absolute inset-0 pointer-events-none select-none overflow-hidden rounded-2xl; }
+.tile-watermark > svg { position: absolute; right: -12px; bottom: -8px; width: 120px; height: 120px; opacity: .10; }
+/* --- Action Tray & Fancy Pills --- */
+.action-tray {
+  /* sits under the header, stays visible while you scroll */
+  position: sticky;
+  top: 0.5rem; /* tweak if header is taller */
+  z-index: 30;
+}
+
+.action-tray-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  border: 1px solid var(--accent-200);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.action-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1rem;
+  border-radius: 9999px;
+  font-size: .925rem;
+  line-height: 1;
+  transition: transform .2s ease, box-shadow .2s ease, background .3s ease;
+
+  /* gradient border trick */
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, var(--accent-200), var(--accent-300)) border-box;
+}
+
+.action-pill:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 10px 35px rgba(var(--accent-shadow-rgb), .20);
+}
+
+.action-icon {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 9999px;
+  background: var(--accent-100);
+  color: var(--accent-700);
+  box-shadow: inset 0 0 0 1px var(--accent-200);
+}
+
+/* active state (when the form is open) */
+.action-pill[data-active="true"] {
+  background:
+    linear-gradient(var(--accent-50), var(--accent-50)) padding-box,
+    linear-gradient(90deg, var(--accent-300), var(--accent-600)) border-box;
+  box-shadow: 0 10px 35px rgba(var(--accent-shadow-rgb), .25);
+}
+
+/* --- Pill Link Styles --- */
+.link-pill {
+  @apply rounded-full px-3 py-2 text-sm border bg-white/90 accent-border hover-glow;
+}
+.link-pill--active {
+  @apply text-white;
+  background-color: var(--accent-600);
+}
+
+/* --- Pill Link Styles (plain CSS for compatibility) --- */
+.link-pill {
+  border-radius: 9999px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  border: 1px solid var(--accent-200, #e0e7ff);
+  background: rgba(255,255,255,0.9);
+  color: var(--accent-700, #334155);
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.link-pill:hover {
+  box-shadow: 0 4px 16px rgba(var(--accent-shadow-rgb, 51,65,85), 0.10);
+  background: #fff;
+}
+.link-pill--active {
+  color: #fff;
+  background-color: var(--accent-600, #6366f1);
+  border-color: var(--accent-600, #6366f1);
+}
